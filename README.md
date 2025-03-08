@@ -1,6 +1,9 @@
-## Problem Statement 
+## Problem Statement
+- To be added
 
 ## Architecture Diagram
+
+- To be added
 
 <p><h3>Prerequistes:</h3>
 <ol>
@@ -11,7 +14,7 @@
 ## Branching Strategies:
 
 1. Production Branch (main)
-   [My repo](https://github.com/jingyang022/ce8-grp4-capstone/tree/main)
+   [Project Repo](https://github.com/jingyang022/ce8-grp4-capstone/tree/main)
    - The main branch, also known as the master branch, represents the production-ready state of the application.
    - It contains stable and thoroughly tested code that is ready to be deployed to the live environment.
    - Only fully reviewed and approved code changes are merged into the main branch.
@@ -31,11 +34,17 @@
    - Feature branches are short-lived and are eventually deleted after merging into the dev branch to maintain a clean and manageable codebase.
 
 ## CICD Pipelines:
+- To be added
 
 ## Member Contributions:
-| Name          | Focused Area  | 
-| ------------- |:-------------:|
-| Yap Jing Yang | Documentation |
+| Name           | Area of Responsibility        | 
+| -------------  |:------------------------------|
+| Yap Jing Yang  | Documentation                 |
+| Wong Choon Yee | Security Ops                  |
+| Yoon           | Terraform Infra               |
+| Wei Xiong      | Application (flask app, image)|
+| Ng Zi Rong     | CICD Pipelines                |
+
 
 
 

@@ -7,6 +7,7 @@ resource "aws_sns_topic_subscription" "email-target" {
   topic_arn = aws_sns_topic.topic.arn
   protocol  = "email"
   endpoint  = "yllee9127@gmail.com"
+  endpoint_auto_confirms = true
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {

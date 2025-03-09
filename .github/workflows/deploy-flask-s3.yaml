@@ -1,8 +1,10 @@
 name: S3 Actions
-on:
-  push:
-    branches:
-      - dev
+#on:
+#  push:
+#    branches:
+#      - dev
+
+on: workflow_dispatch
 
 jobs:
   build:

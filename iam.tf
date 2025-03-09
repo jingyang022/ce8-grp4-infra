@@ -1,6 +1,6 @@
 # Create ECS task role
 resource "aws_iam_role" "ecs_task_role" {
-  name = "yap-ecs-s3-taskrole"
+  name = "ce8-grp4-ecs-s3-taskrole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",

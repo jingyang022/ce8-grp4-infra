@@ -1,21 +1,16 @@
 # Create two ECR repo for S3 and SQS services
 
-# resource "aws_ecr_repository" "flask-sqs-repo" {
-#   name         = "yap-flask-sqs-repo"
-#   force_delete = true
-# }
-
-# resource "aws_ecr_repository" "flask-s3-repo" {
-#   name         = "yap-flask-s3-repo"
-#   force_delete = true
-# }
+resource "aws_ecr_repository" "flask-s3-repo" {
+  name         = "ce8-grp4-flask-s3-repo"
+  force_delete = true
+}
 
 # Create ECS cluster and service
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "~> 5.9.0"
 
-  cluster_name = "yap-cluster"
+  cluster_name = "ce8-grp4-cluster"
 
   fargate_capacity_providers = {
     FARGATE = {
@@ -26,14 +21,14 @@ module "ecs" {
   }
 
   services = {
-    yap-s3-service = {
+    ce8-grp4-s3-service = {
       cpu    = 512
       memory = 1024
 
       container_definitions = {
-        yap-s3-app = {
+        ce8-grp4-s3-app = {
           essential = true
-          image     = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/yap-flask-s3-repo:latest"
+          image     = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/ce8-grp4-flask-s3-repo:latest"
           port_mappings = [
             {
               containerPort = 5001
@@ -48,7 +43,7 @@ module "ecs" {
             },
             {
               name  = "BUCKET_NAME"
-              value = "yap-bucket-220225"
+              value = "ce8-grp4-bucket"
             }
           ]
         }
@@ -58,41 +53,7 @@ module "ecs" {
       create_tasks_iam_role              = false
       tasks_iam_role_arn                 = aws_iam_role.ecs_task_role.arn
       subnet_ids                         = data.aws_subnets.public.ids
-      security_group_ids                 = [aws_security_group.ecs-s3-sg.id]                                                       #Create a SG resource and pass it here
-    }
-  
-    yap-sqs-service = {
-      cpu    = 512
-      memory = 1024
-
-      container_definitions = {
-        yap-sqs-app = {
-          essential = true
-          image     = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/yap-flask-sqs-repo:latest"
-          port_mappings = [
-            {
-              containerPort = 5002
-              hostPort      = 5002
-              protocol      = "tcp"
-            }
-          ]
-          # environment = [
-          #   {
-          #     name  = "AWS_REGION"
-          #     value = "ap-southeast-1"
-          #   },
-          #   {
-          #     name  = "QUEUE_URL"
-          #     value = "jaz-sqs-service-queue"
-          #   }
-          # ]
-        }
-      }
-      assign_public_ip                   = true
-      deployment_minimum_healthy_percent = 100
-      
-      subnet_ids                         = data.aws_subnets.public.ids
-      security_group_ids                 = [aws_security_group.ecs-sqs-sg.id]                                                       #Create a SG resource and pass it here
+      security_group_ids                 = [aws_security_group.ecs-s3-sg.id] #Create a SG resource and pass it here
     }
   }
 }

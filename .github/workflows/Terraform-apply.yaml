@@ -4,7 +4,7 @@ on:
   push:
     branches: #["main"]
     - main
-    #- snyk
+    - snyk
 
 env:
   AWS_REGION: ap-southeast-1

@@ -10,7 +10,7 @@ env:
   AWS_REGION: ap-southeast-1
 
 jobs:
-  Snyk Scan:
+  Snyk-Scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

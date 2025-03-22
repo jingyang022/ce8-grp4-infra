@@ -10,13 +10,13 @@ env:
   AWS_REGION: ap-southeast-1
 
 jobs:
-  security:
+  Snyk Scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run Snyk scan
-        uses: snyk/actions/node@master
+        uses: snyk/actions/iac@master
         with:
             token: ${{ secrets.SNYK_TOKEN }}
 

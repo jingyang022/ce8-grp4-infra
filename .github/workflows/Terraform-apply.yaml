@@ -20,8 +20,6 @@ jobs:
         env: 
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --report
-          args: --scan=resource-changes
           args: --severity-threshold=high
 
   Terraform-CI:

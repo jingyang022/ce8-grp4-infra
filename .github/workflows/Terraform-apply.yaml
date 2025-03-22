@@ -2,7 +2,9 @@ name: Terraform Apply
 #trigger test deployment
 on:
   push:
-    branches: ["main"]
+    branches: #["main"]
+    - main
+    - dev
 
 env:
   AWS_REGION: ap-southeast-1
@@ -22,7 +24,7 @@ jobs:
         run: snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          
+
       - name: Checkout
         uses: actions/checkout@v3
 

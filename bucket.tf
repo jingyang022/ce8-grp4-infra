@@ -27,3 +27,14 @@ resource "aws_s3_bucket_acl" "ce8-grp4-s3-acl" {
   bucket = aws_s3_bucket.ce8-grp4-s3-bucket.id
   acl    = "public-read"
 }
+
+resource "aws_s3_bucket_notification" "bucket_notification" {
+  bucket = aws_s3_bucket.ce8-grp4-s3-bucket.id
+
+  lambda_function {
+    lambda_function_arn = aws_lambda_function.func1.arn
+    events              = ["s3:ObjectCreated:*"]
+  }
+
+  depends_on = [aws_lambda_permission.allow_bucket]
+}

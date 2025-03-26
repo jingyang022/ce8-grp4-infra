@@ -1,4 +1,4 @@
-# Create two ECR repo for S3 and SQS services
+# Create ECR repo to store image
 
 resource "aws_ecr_repository" "flask-s3-repo" {
   name         = "ce8-grp4-flask-s3-repo"

@@ -1,20 +1,33 @@
 ## Problem Statement
-- To be added
-
-## Architecture Diagram
+![Current Process](/images/problem.jpg)
 
 - To be added
 
-<p><h3>Prerequistes:</h3>
-<ol>
-  <li>1x VPC with public subnets</li>
-  <li>1x ECR</li>
-</ol>
+
+## Proposed Solution
+![Architecture](/images/solution.jpg)
+
+- To be added
+
+
+## GITHUB Repositories
+
+1. Main Project Repository
+   [Project Repo](https://github.com/jingyang022/ce8-grp4-infra)
+   - Holds the terraform infrastructure code and documentation for the project.
+   - Has a GITHUB workflow to check the terraform code for code errors and security vulnerabilities. Detailed explanation is given in the CICD Pipelines section.
+
+2. Application Repository
+   [App Repo](https://github.com/jingyang022/ce8-grp4-app)
+   - This repo stores the image code for the container.
+   - Has a GITHUB workflow to build and push the container image to AWS ECR. Detailed explanation is given in the CICD Pipelines section.
+
 
 ## Branching Strategies:
 
+![Branching](/images/cicd.jpg)
+
 1. Production Branch (main)
-   [Project Repo](https://github.com/jingyang022/ce8-grp4-capstone/tree/main)
    - The main branch, also known as the master branch, represents the production-ready state of the application.
    - It contains stable and thoroughly tested code that is ready to be deployed to the live environment.
    - Only fully reviewed and approved code changes are merged into the main branch.
@@ -26,24 +39,27 @@
    - Developers regularly merge their completed feature branches into the dev branch for integration testing and collaboration.
    - Continuous integration practices are often implemented on the dev branch, allowing automated testing and verification of code changes.
 
-3. Feature Branch (feature-1)
-   - Feature branches are created by developers to work on specific features or bug fixes independently.
-   - Each feature branch represents a self-contained task or feature development.
-   - Developers work on their feature branches locally, implementing and testing their changes.
-   - Once the feature is completed and tested, it is merged into the dev branch for further integration.
-   - Feature branches are short-lived and are eventually deleted after merging into the dev branch to maintain a clean and manageable codebase.
 
 ## CICD Pipelines:
-- To be added
+
+1. Infra Repo (infra-cicd-workflow)
+   - checks the code (fmt, tfint & SYNK check)
+   - do terraform init, plan & apply
+
+2. Application Repo (app-cicd-workflow)
+   - checks the code (fmt & SYNK check)
+   - Push image to ECR
+   - Update container task definition
+
 
 ## Member Contributions:
-| Name           | Area of Responsibility        | 
-| -------------  |:------------------------------|
-| Yap Jing Yang  | Documentation                 |
-| Wong Choon Yee | Security Ops                  |
-| Yoon           | Terraform Infra               |
-| Wei Xiong      | Application (flask app, image)|
-| Ng Zi Rong     | CICD Pipelines                |
+| Name           | Area of Responsibility                            | 
+| -------------  |:--------------------------------------------------|
+| Yap Jing Yang  | Documentation, Terraform & Testing, CICD workflow |
+| Wong Choon Yee | Security (implement SYNK)                         |
+| Yoon           | Terraform & Testing, CICD workflow                |
+| Wei Xiong      | Documentation                                     |
+| Ng Zi Rong     | Enhanced the website                              |
 
 
 

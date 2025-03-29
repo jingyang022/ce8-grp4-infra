@@ -1,7 +1,7 @@
 # Create ECR repo to store image
 
-resource "aws_ecr_repository" "prod-repo" {
-  name         = "ce8-grp4-prod-repo"
+resource "aws_ecr_repository" "dev-repo" {
+  name         = "ce8-grp4-dev-repo"
   force_delete = true
 }
 
@@ -10,7 +10,7 @@ module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "~> 5.9.0"
 
-  cluster_name = "ce8-grp4-prod-cluster"
+  cluster_name = "ce8-grp4-dev-cluster"
 
   fargate_capacity_providers = {
     FARGATE = {
@@ -21,14 +21,14 @@ module "ecs" {
   }
 
   services = {
-    ce8-grp4-s3-prod-service = {
+    ce8-grp4-s3-dev-service = {
       cpu    = 512
       memory = 1024
 
       container_definitions = {
-        ce8-grp4-s3-prod-app = {
+        ce8-grp4-s3-dev-app = {
           essential = true
-          image     = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/ce8-grp4-prod-repo:latest"
+          image     = "255945442255.dkr.ecr.ap-southeast-1.amazonaws.com/ce8-grp4-dev-repo:latest"
           port_mappings = [
             {
               containerPort = 5001

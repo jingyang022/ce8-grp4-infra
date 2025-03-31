@@ -1,5 +1,5 @@
-name: Terraform Apply
-#trigger test deployment
+name: Deploy to Production
+
 on:
   push:
     branches: ["main"]
@@ -8,7 +8,7 @@ env:
   AWS_REGION: ap-southeast-1
 
 jobs:
-  Terraform-CI:
+  Deploy-To-Production:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,4 +36,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply --auto-approve
-# End of code
+

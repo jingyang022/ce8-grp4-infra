@@ -1,11 +1,10 @@
-name: Dev Env TFLint and SYNK scan
-
-# on: 
-#   pull_request:
-#      types: [opened]
+name: Check Production Code
+on: 
+  pull_request:
+     types: [opened]
 
 jobs:
-  dev-env-CodeCheck:
+  prod-code-check:
     runs-on: ubuntu-latest
     steps:
       - uses: terraform-linters/setup-tflint@v3

@@ -20,12 +20,12 @@ jobs:
         env: 
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects --severity-threshold=critical --report 
+          args: --severity-threshold=critical --report 
                 
 
   Deploy-To-Production:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3

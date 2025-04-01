@@ -23,9 +23,9 @@ jobs:
           args: --all-projects --severity-threshold=critical --report 
                 
 
-  Terraform-CI:
   Deploy-To-Production:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3

@@ -38,3 +38,14 @@ resource "aws_s3_bucket_notification" "dev_bucket_notification" {
 
   depends_on = [aws_lambda_permission.dev_lambda1_allow_bucket]
 }
+
+resource "aws_s3_object" "upload_png" {
+  bucket = aws_s3_bucket.ce8-grp4-dev-bucket.id
+  key    = "images/singapore_bg.png"  # Path inside the bucket
+  source = "singapore_bg.png"          # Path to local file
+  content_type = "image/png"
+
+  depends_on = [aws_s3_bucket.ce8-grp4-dev-bucket]
+}
+
+
